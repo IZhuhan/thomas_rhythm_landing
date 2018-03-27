@@ -1,19 +1,13 @@
-const navTabs = $( '.nav-tabs' );
-
-navTabs.on( 'click', function( e ) {
+$( '.nav-tabs' ).on( 'click', 'li', function( e ) {
     e.preventDefault();
 
-    const tabControls = $( e.target ).closest( '.nav-tabs' ).find( 'li' );
-    const activeTab = $( e.target ).closest( 'li' );
-
-    const id = activeTab.find( 'a' ).attr( 'href' );
-
-    const tabPanes = $( e.target ).closest( '.nav-tabs' ).siblings().find( '.tab-pane' );
-    const activePane =  $( `.tab-pane${ id }` );
+    const tabControls = $( this ).closest( '.nav-tabs' ).find( 'li' );
+    const tabPanes = $( this ).closest( '.nav-tabs' ).next().find( '.tab-pane' );
+    const id = $( this ).find( 'a' ).attr( 'href' );
 
     tabControls.removeClass( 'active' );
     tabPanes.removeClass( 'active in' );
 
-    activeTab.addClass( 'active' );
-    activePane.addClass( 'active' ).fadeIn().addClass( 'in' );
+    $( this ).addClass( 'active' );
+    $( `.tab-pane${ id }` ).addClass( 'active' ).fadeIn().addClass( 'in' );
 });
