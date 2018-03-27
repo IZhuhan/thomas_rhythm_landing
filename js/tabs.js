@@ -6,10 +6,10 @@ navTabs.on( 'click', function( e ) {
     const tabControls = $( e.target ).closest( '.nav-tabs' ).find( 'li' );
     const activeTab = $( e.target ).closest( 'li' );
 
-    const target = activeTab.find( 'a' ).attr( 'href' );
+    const id = activeTab.find( 'a' ).attr( 'href' );
 
     const tabPanes = $( e.target ).closest( '.nav-tabs' ).siblings().find( '.tab-pane' );
-    const activePane =  $( `.tab-pane${ target }` );
+    const activePane =  $( `.tab-pane${ id }` );
 
     tabControls.removeClass( 'active' );
     tabPanes.removeClass( 'active in' );
